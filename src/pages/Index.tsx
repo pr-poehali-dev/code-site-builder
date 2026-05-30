@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
@@ -56,23 +57,47 @@ const methods = [
 ];
 
 const Index = () => {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme') === 'dark';
+    setDark(saved);
+    document.documentElement.classList.toggle('dark', saved);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('theme', next ? 'dark' : 'light');
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground transition-colors">
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 py-5">
         <div className="container mx-auto flex items-center justify-between px-5">
           <span className="font-semibold text-lg tracking-widest text-primary">
             ГАРМОНИЯ
           </span>
-          <div className="hidden md:flex gap-8 text-sm">
-            <a href="#about" className="hover:text-primary transition-colors">
-              Обо мне
-            </a>
-            <a href="#methods" className="hover:text-primary transition-colors">
-              Методы
-            </a>
-            <a href="#contact" className="hover:text-primary transition-colors">
-              Контакты
-            </a>
+          <div className="flex items-center gap-8">
+            <div className="hidden md:flex gap-8 text-sm">
+              <a href="#about" className="hover:text-primary transition-colors">
+                Обо мне
+              </a>
+              <a href="#methods" className="hover:text-primary transition-colors">
+                Методы
+              </a>
+              <a href="#contact" className="hover:text-primary transition-colors">
+                Контакты
+              </a>
+            </div>
+            <button
+              onClick={toggleTheme}
+              aria-label="Переключить тему"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              <Icon name={dark ? 'Sun' : 'Moon'} size={18} />
+            </button>
           </div>
         </div>
       </nav>
