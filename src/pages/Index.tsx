@@ -35,6 +35,27 @@ const works = [
   { tag: 'ПЛАКАТ', title: 'Anti-Manifesto', year: '2023' },
 ];
 
+const formats = [
+  {
+    tag: 'ИНДИВИДУАЛЬНО',
+    tagClass: 'bg-primary/10 text-primary',
+    title: 'Авторский проект',
+    text: 'Глубокая проработка визуального высказывания один на один с арт-директором.',
+  },
+  {
+    tag: 'СРОЧНО',
+    tagClass: 'bg-destructive/10 text-destructive',
+    title: 'Экспресс-плакат',
+    text: 'Оперативная разработка концепции и макета под горящий дедлайн.',
+  },
+  {
+    tag: 'ГРУППА',
+    tagClass: 'bg-accent/15 text-accent',
+    title: 'Воркшопы',
+    text: 'Практические модули по деконструкции, коллажу и брутальной типографике.',
+  },
+];
+
 const Index = () => {
   const [dark, setDark] = useState(false);
 
@@ -65,6 +86,9 @@ const Index = () => {
               </a>
               <a href="#works" className="hover:text-primary transition-colors">
                 Работы
+              </a>
+              <a href="#formats" className="hover:text-primary transition-colors">
+                Форматы
               </a>
               <a href="#contact" className="hover:text-primary transition-colors">
                 Контакт
@@ -171,6 +195,36 @@ const Index = () => {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section id="formats" className="bg-secondary py-24">
+        <div className="container mx-auto px-5">
+          <div className="border-b border-border pb-6 mb-12">
+            <h2 className="text-4xl md:text-6xl uppercase">
+              Доступные форматы работы
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {formats.map((f) => (
+              <div
+                key={f.title}
+                className="bg-card border border-border p-7 hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all"
+              >
+                <span
+                  className={`inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 mb-5 ${f.tagClass}`}
+                >
+                  {f.tag}
+                </span>
+                <h3 className="text-xl uppercase mb-3 leading-tight">
+                  {f.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {f.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
