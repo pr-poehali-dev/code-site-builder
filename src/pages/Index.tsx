@@ -2,70 +2,44 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
-const HERO_IMAGE =
-  'https://cdn.poehali.dev/projects/f867a1a7-ccc6-4c83-bda2-adced18fb784/files/f64843e2-2575-4108-909e-d1de64d172ba.jpg';
+const IMG_HERO =
+  'https://cdn.poehali.dev/projects/f867a1a7-ccc6-4c83-bda2-adced18fb784/files/ecfb3eb4-b27e-4447-983d-26e99d165843.jpg';
+const IMG_SECOND =
+  'https://cdn.poehali.dev/projects/f867a1a7-ccc6-4c83-bda2-adced18fb784/files/11e8e71a-cd8b-4839-b71e-03ec193a7fb9.jpg';
 
-const features = [
+const manifest = [
   {
-    icon: 'Lock',
-    title: 'Конфиденциальность',
-    text: 'Ваши истории остаются только внутри кабинета',
+    no: '01',
+    icon: 'Shapes',
+    title: 'Форма ломает функцию',
+    text: 'Мы отказываемся от чистоты модернизма. Хаос, ирония и коллаж — наш язык.',
   },
   {
-    icon: 'BadgeCheck',
-    title: 'Доказательный подход',
-    text: 'Использую только проверенные методики КПТ и гештальт-терапии',
+    no: '02',
+    icon: 'Layers',
+    title: 'Слой поверх слоя',
+    text: 'Смыслы наслаиваются друг на друга. Нет одной правды — есть множество прочтений.',
   },
   {
-    icon: 'Globe',
-    title: 'Удобный формат',
-    text: 'Очные встречи в центре города или онлайн из любой точки мира',
+    no: '03',
+    icon: 'Quote',
+    title: 'Цитата вместо оригинала',
+    text: 'Прошлое и будущее сталкиваются в одной точке. Эклектика как метод.',
   },
 ];
 
-const methods = [
-  {
-    icon: 'HeartPulse',
-    title: 'Тревожные состояния',
-    text: 'Работа с паническими атаками, фобиями и постоянным чувством беспокойства.',
-  },
-  {
-    icon: 'Users',
-    title: 'Межличностные отношения',
-    text: 'Выход из созависимости, разрешение конфликтов, работа с личными границами.',
-  },
-  {
-    icon: 'Home',
-    title: 'Семья',
-    text: 'Гармонизация семейных отношений, преодоление кризисов и недопонимания между близкими.',
-  },
-  {
-    icon: 'Baby',
-    title: 'Дети',
-    text: 'Поддержка в вопросах воспитания, понимание потребностей и эмоций ребёнка.',
-  },
-  {
-    icon: 'Network',
-    title: 'Окружение',
-    text: 'Выстраивание здоровых связей с коллегами, друзьями и социальным кругом.',
-  },
-  {
-    icon: 'Sparkles',
-    title: 'Самооценка',
-    text: 'Поиск самоценности, работа с синдромом самозванца и уверенностью в себе.',
-  },
-  {
-    icon: 'Heart',
-    title: 'Помощь сексолога',
-    text: 'Индивидуальные и семейные консультации по интимным вопросам и гармонии в паре.',
-  },
+const works = [
+  { tag: 'ТИПОГРАФИКА', title: 'Distorted Grid', year: '2024' },
+  { tag: 'КОЛЛАЖ', title: 'Fragments of Sense', year: '2024' },
+  { tag: 'ИНСТАЛЛЯЦИЯ', title: 'Concrete Dreams', year: '2023' },
+  { tag: 'ПЛАКАТ', title: 'Anti-Manifesto', year: '2023' },
 ];
 
 const Index = () => {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('theme') === 'dark';
+    const saved = localStorage.getItem('theme') !== 'light';
     setDark(saved);
     document.documentElement.classList.toggle('dark', saved);
   }, []);
@@ -78,28 +52,28 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors">
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/90 py-5">
-        <div className="container mx-auto flex items-center justify-between px-5">
-          <span className="font-semibold text-lg tracking-widest text-primary">
-            ГАРМОНИЯ
+    <div className="min-h-screen bg-background text-foreground transition-colors overflow-x-hidden">
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+        <div className="container mx-auto flex items-center justify-between px-5 py-5">
+          <span className="font-[Archivo_Black] text-xl tracking-tighter uppercase">
+            POST<span className="text-primary">/</span>MOD
           </span>
-          <div className="flex items-center gap-8">
-            <div className="hidden md:flex gap-8 text-sm">
-              <a href="#about" className="hover:text-primary transition-colors">
-                Обо мне
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+              <a href="#manifest" className="hover:text-primary transition-colors">
+                Манифест
               </a>
-              <a href="#methods" className="hover:text-primary transition-colors">
-                Методы
+              <a href="#works" className="hover:text-primary transition-colors">
+                Работы
               </a>
               <a href="#contact" className="hover:text-primary transition-colors">
-                Контакты
+                Контакт
               </a>
             </div>
             <button
               onClick={toggleTheme}
               aria-label="Переключить тему"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="inline-flex items-center justify-center w-10 h-10 border border-border text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               <Icon name={dark ? 'Sun' : 'Moon'} size={18} />
             </button>
@@ -107,87 +81,140 @@ const Index = () => {
         </div>
       </nav>
 
-      <header
-        id="about"
-        className="container mx-auto px-5 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center"
-      >
-        <div className="text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl leading-tight mb-6">
-            Пространство, где вас слышат
-          </h1>
-          <p className="text-lg text-muted-foreground mb-9 max-w-lg mx-auto md:mx-0">
-            Профессиональная психологическая поддержка в комфортной обстановке.
-            Помогу найти ресурс для изменений и внутреннюю опору.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full px-9 py-6 text-base shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform"
-          >
-            <a href="#contact">Начать работу</a>
-          </Button>
+      <header className="container mx-auto px-5 pt-16 pb-24 md:pt-24 relative">
+        <p className="uppercase tracking-[0.4em] text-xs text-muted-foreground mb-8">
+          Студия визуального бунта — с 2019
+        </p>
+        <h1 className="text-[15vw] md:text-[11vw] leading-[0.82] uppercase">
+          Хаос
+          <span className="block text-primary ml-[12vw]">это</span>
+          <span className="block text-right">метод</span>
+        </h1>
+
+        <div className="grid md:grid-cols-2 gap-10 mt-16 items-end">
+          <div
+            className="w-full h-[320px] md:h-[440px] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${IMG_HERO})`,
+              transform: 'rotate(-2deg)',
+            }}
+          />
+          <div className="md:pb-8">
+            <p className="text-lg md:text-xl leading-relaxed max-w-md mb-8">
+              Мы создаём визуальные высказывания на стыке иронии, цитаты и
+              деконструкции. Ни одного правила, которое нельзя сломать.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="rounded-none px-9 py-6 text-base uppercase tracking-widest hover:translate-x-2 transition-transform"
+            >
+              <a href="#works">
+                Смотреть работы
+                <Icon name="ArrowRight" size={18} className="ml-2" />
+              </a>
+            </Button>
+          </div>
         </div>
-        <div
-          className="w-full h-[400px] md:h-[500px] bg-cover bg-center rounded-t-[200px] rounded-b-3xl"
-          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-        />
       </header>
 
-      <section className="container mx-auto px-5 grid md:grid-cols-3 gap-8 py-16">
-        {features.map((f) => (
-          <div key={f.title} className="text-center px-5 py-10">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-secondary text-primary mb-5">
-              <Icon name={f.icon} size={26} />
-            </div>
-            <h3 className="text-xl mb-3">{f.title}</h3>
-            <p className="text-sm text-muted-foreground">{f.text}</p>
-          </div>
-        ))}
-      </section>
-
-      <section id="methods" className="bg-secondary py-24">
+      <section id="manifest" className="bg-primary text-primary-foreground py-24">
         <div className="container mx-auto px-5">
-          <h2 className="text-3xl md:text-4xl mb-12">Направления работы</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {methods.map((m) => (
-              <div
-                key={m.title}
-                className="bg-card p-10 rounded border-b-4 border-transparent hover:border-primary transition-colors"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary text-primary mb-5">
-                  <Icon name={m.icon} size={24} />
+          <h2 className="text-4xl md:text-6xl uppercase mb-16">Манифест</h2>
+          <div className="grid md:grid-cols-3 gap-px bg-primary-foreground/20">
+            {manifest.map((m) => (
+              <div key={m.no} className="bg-primary p-8 md:p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-5xl font-[Archivo_Black] opacity-30">
+                    {m.no}
+                  </span>
+                  <Icon name={m.icon} size={32} />
                 </div>
-                <h3 className="text-xl mb-4">{m.title}</h3>
-                <p className="text-muted-foreground">{m.text}</p>
+                <h3 className="text-2xl uppercase mb-4 leading-tight">
+                  {m.title}
+                </h3>
+                <p className="opacity-80 leading-relaxed">{m.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-24 text-center">
-        <div className="container mx-auto px-5">
-          <h2 className="text-3xl md:text-4xl mb-5">Готовы познакомиться?</h2>
-          <p className="text-muted-foreground mb-10">
-            Первая 20-минутная ознакомительная встреча — бесплатно.
+      <section id="works" className="container mx-auto px-5 py-24">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <h2 className="text-4xl md:text-6xl uppercase">
+            Избранные
+            <br />
+            работы
+          </h2>
+          <p className="text-muted-foreground max-w-sm">
+            Фрагменты, плакаты, инсталляции и эксперименты на грани читаемости.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full px-9 py-6 text-base shadow-lg shadow-primary/20 hover:-translate-y-1 transition-transform"
-          >
-            <a href="#">
-              <Icon name="Send" size={18} className="mr-2" />
-              Записаться через Telegram
-            </a>
-          </Button>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-px bg-border">
+          {works.map((w, i) => (
+            <div
+              key={w.title}
+              className="bg-card p-10 md:p-14 group hover:bg-secondary transition-colors"
+              style={{ marginTop: i % 2 ? '0' : '0' }}
+            >
+              <span className="text-xs uppercase tracking-[0.3em] text-primary">
+                {w.tag}
+              </span>
+              <h3 className="text-3xl md:text-5xl uppercase mt-4 mb-6 group-hover:translate-x-2 transition-transform">
+                {w.title}
+              </h3>
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span>{w.year}</span>
+                <Icon name="ArrowUpRight" size={28} />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <footer className="py-16 text-center bg-foreground text-background">
-        <p className="text-sm">
-          © 2024 Психолог Мария Иванова. Лицензированный специалист.
+      <section className="relative">
+        <div
+          className="w-full h-[360px] md:h-[520px] bg-cover bg-center"
+          style={{ backgroundImage: `url(${IMG_SECOND})` }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="container mx-auto px-5">
+            <p className="text-3xl md:text-6xl uppercase max-w-3xl leading-tight text-background mix-blend-difference">
+              «Нет смысла — есть только его бесконечная интерпретация»
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="container mx-auto px-5 py-28 text-center">
+        <p className="uppercase tracking-[0.4em] text-xs text-muted-foreground mb-8">
+          Начнём диалог
         </p>
+        <h2 className="text-5xl md:text-8xl uppercase mb-12">
+          Сломаем
+          <span className="text-primary"> вместе</span>
+        </h2>
+        <Button
+          asChild
+          size="lg"
+          className="rounded-none px-10 py-7 text-base uppercase tracking-widest hover:translate-x-2 transition-transform"
+        >
+          <a href="#">
+            <Icon name="Send" size={18} className="mr-2" />
+            Написать нам
+          </a>
+        </Button>
+      </section>
+
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm uppercase tracking-widest text-muted-foreground">
+          <span className="font-[Archivo_Black] text-foreground tracking-tighter">
+            POST/MOD
+          </span>
+          <span>© 2024 — Студия визуального бунта</span>
+        </div>
       </footer>
     </div>
   );
