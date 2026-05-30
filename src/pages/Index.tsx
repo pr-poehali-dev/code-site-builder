@@ -24,26 +24,32 @@ const features = [
 
 const methods = [
   {
+    icon: 'HeartPulse',
     title: 'Тревожные состояния',
     text: 'Работа с паническими атаками, фобиями и постоянным чувством беспокойства.',
   },
   {
+    icon: 'Users',
     title: 'Межличностные отношения',
     text: 'Выход из созависимости, разрешение конфликтов, работа с личными границами.',
   },
   {
+    icon: 'Home',
     title: 'Семья',
     text: 'Гармонизация семейных отношений, преодоление кризисов и недопонимания между близкими.',
   },
   {
+    icon: 'Baby',
     title: 'Дети',
     text: 'Поддержка в вопросах воспитания, понимание потребностей и эмоций ребёнка.',
   },
   {
+    icon: 'Network',
     title: 'Окружение',
     text: 'Выстраивание здоровых связей с коллегами, друзьями и социальным кругом.',
   },
   {
+    icon: 'Sparkles',
     title: 'Самооценка',
     text: 'Поиск самоценности, работа с синдромом самозванца и уверенностью в себе.',
   },
@@ -118,6 +124,9 @@ const Index = () => {
                 key={m.title}
                 className="bg-card p-10 rounded border-b-4 border-transparent hover:border-primary transition-colors"
               >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary text-primary mb-5">
+                  <Icon name={m.icon} size={24} />
+                </div>
                 <h3 className="text-xl mb-4">{m.title}</h3>
                 <p className="text-muted-foreground">{m.text}</p>
               </div>
